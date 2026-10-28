@@ -1,0 +1,33 @@
+{
+  "matrix_sha256": "6f9547330a6c155ae0e1357c0a6b22d97863bf8079b5369fc7ecf86ab13b9db0",
+  "created_helpers_total": 36,
+  "resource_guard_positive_real_start": "NOT_RUN_RESOURCE_BLOCKED",
+  "report_sha256": "24c909373dad145ace79d18816040df44b780a98903992a997f6efc3d64569ac",
+  "schema": "wlb-stage03j-delivery-integrity/0.1",
+  "approvals_created": false,
+  "baseline": {
+    "modified": 3,
+    "files": 3387,
+    "preserved": 3384
+  },
+  "checks": {
+    "resource_blocker": "AVAILABLE_RAM_BELOW_8_GIB",
+    "fail": 1,
+    "pass": 137
+  },
+  "inventory": {
+    "sha256": "0717f9e53edb31224b6015a0a4aafe8971d3147f98ec06bec8be689723a25943",
+    "exclusions": [
+      "STAGE03J_SHA256_INVENTORY.csv",
+      "STAGE03J_DELIVERY_INTEGRITY.json"
+    ],
+    "rows": 90,
+    "path": "STAGE03J_SHA256_INVENTORY.csv"
+  },
+  "execution_authority": false,
+  "status": "PARTIAL_WITH_BLOCKERS",
+  "active_model_setting": "NOT_ATTESTED",
+  "next_gate": "WAITING_HUMAN_REVIEW",
+  "utc": "2026-10-14T00:01:55.1053352Z",
+  "created_helpers_after_guard": 0
+}

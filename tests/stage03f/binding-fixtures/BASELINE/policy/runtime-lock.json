@@ -1,0 +1,77 @@
+{
+  "schema_version": "wlb-runtime-lock/0.1",
+  "purpose": "PREPARED_SOURCE_FINGERPRINT_NOT_RUNTIME_VALIDATION",
+  "gate": "G1_ONLY",
+  "origin": {
+    "source_path": "D:\\Musicas\\Bitter-End-Visual-Local\\ComfyUI",
+    "version_from_stage02": "0.38.0",
+    "git_revision_from_stage02": "170594057a22673349ddf0a3d88624b7fa5865bb",
+    "worktree_clean": "NOT_VERIFIED",
+    "source_read_in_this_stage": false,
+    "snapshot_created": true,
+    "snapshot_inventory": [
+      {
+        "path": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03f\\binding-fixtures\\BASELINE\\tests\\stage03e\\evidence\\actual-snapshot-inventory.csv",
+        "sha256": "a7019b00d50a866729ebfc7806f91e7495bd69561783694bfff5198ffb35a8df",
+        "kind": "ACTUAL_NTFS_CONTENT_INVENTORY_NOT_RUNTIME_AUTHORITY",
+        "files": 619,
+        "bytes": 9533695,
+        "groups": 11
+      }
+    ],
+    "snapshot_sha256": "a7019b00d50a866729ebfc7806f91e7495bd69561783694bfff5198ffb35a8df",
+    "snapshot_status": "STAGED_NOT_ACTIVATED",
+    "reason": "Stage03F integrates Stage03E content verification only. Physical snapshot is STAGED_NOT_ACTIVATED; compatibility NOT_VERIFIED; G4/G5 remain closed. Historical G1 fields elsewhere are retained."
+  },
+  "python_candidate": {
+    "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Scripts\\python.exe",
+    "python_version_from_stage02": "3.13.15",
+    "torch_from_stage02": "2.14.1+cu130",
+    "torchaudio_from_stage02": "2.11.0+cu130",
+    "torchvision_from_stage02": "0.29.1+cu130",
+    "transformers_from_stage02": "5.18.0",
+    "binary_hash": null,
+    "execution": "NOT_RUN",
+    "compatibility": "NOT_VERIFIED",
+    "provenance": "Historical Stage02 static evidence only; no fresh import/runtime probe."
+  },
+  "script_runtime_requirement": {
+    "powershell": "7.4_OR_LATER",
+    "availability": "NOT_VERIFIED",
+    "native_link_helper": "NOT_COMPILED_NOT_RUN",
+    "installations_authorized": false
+  },
+  "requested_agent_configuration": {
+    "model": "GPT-6.1 Sol",
+    "reasoning": "High",
+    "active_setting_verification": "NOT_VERIFIED_BY_PREPARATION_TOOLS"
+  },
+  "prepared_artifacts": {
+    "core\\Wlb.Common.ps1": "193f970e487ee61cc59ae464cd8cb78bc95c95fd5e70af18eb53226e71b69255",
+    "core\\Test-WlbManifest.ps1": "ec559370f75d541f66455187f4cae75b02297f3305da90df8e0707390076949f",
+    "core\\Invoke-WlbJob.ps1": "2278e14b700fe722c5ca6d7e2d6e2245c3b88b1288fdee006da2cdd415a5fe66",
+    "core\\Test-WlbOutput.ps1": "283718ce05f5caaaefbf5ef6bb2ee070ee5b0bc92d91f2a65c0ccee6ef7a6768",
+    "policy\\shot-manifest.schema.json": "5516147b01714d4bebe49036147de104ee9268995434cec27baac57882ed5e84",
+    "policy\\executor-policy.json": "2782c8aed1b02b959b6efb13eb4244a7e871d3bb8b279c554a0ddbceb22baf31",
+    "bible\\character-bible.v0.1.json": "08e216196d54297bc1868fbabdfac69305b77aa7eedd64715706ee829e0a70f8",
+    "workflows\\draft\\poc0-calibration.api.json": "0f9f407cf4aef2bb98aea9f44603521eec38558b986ed09e535c1259d6ae3a1e",
+    "spec\\FUTURE_EXECUTION_CONTRACT.md": "61b8642bf7c8fd3b6cf442cf18d33ca3a8a2fd7ed3fca42ba6a78797e67c6acc",
+    "core\\Wlb.Startup.ps1": "6847dc5439c22f0db5d00f6f5f647e31821847374b3787537fb0a0fa75840267",
+    "core\\Start-WlbRuntime.ps1": "427be7379bc15750ece78b77911bf68515c37a28659c80d30531ac858893f25c",
+    "core\\Wlb.RuntimeMonitor.ps1": "b2d68365699194ec2c0db37529d644006d167cc3918f659d0f3a9688b5aaeb1e",
+    "core\\Wlb.StartupFiles.ps1": "a0f31be7e5b1920f95a14c64f419639312055edc9961d1cf62d4504b6f01dcdd",
+    "policy\\startup-policy.json": "e1db244a744f6ee228956d7fdd199c89737822299bab7785b58ba8c9e527795f",
+    "policy\\startup-identity.json": "10e751ee38ed20b62f0887439f4d31fb492f053131d3ff64e7ca8a0160e22187",
+    "spec\\G4_SNAPSHOT_COPY_INVENTORY.csv": "a8e69c205a7f98a1aa3bb34d399201a61e76c112c233f7202abc8b25ba2941eb",
+    "spec\\G4_DEPENDENCY_METADATA.json": "97710ef8f044f13c1eb2c570ba188a697ce301c17aa871ef573a0afbbaabe901"
+  },
+  "source_contracts": {
+    "stage03b_sha256": "495cb933e2c66613b08978740b211fc8eb9882c5e3430b1cdc4c6cf31d616cf5",
+    "stage03a_sha256": "f7ff595ac7292030b162e13cc7b3aa6db560965b626f2e6100371ebdf8e7df3c",
+    "stage02_sha256": "c77e83d38c2034fbe4feb25910cc179ed955d1242867cb529b398855514abdfd"
+  },
+  "approval_created": false,
+  "execution_validation": "NOT_VERIFIED",
+  "security_boundary_validation": "NOT_VERIFIED",
+  "performance_evidence": "NONE"
+}

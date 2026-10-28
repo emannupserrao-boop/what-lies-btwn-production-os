@@ -1,0 +1,29 @@
+{
+  "schema": "wlb-stage03j-central-guard-backup/0.1",
+  "utc": "2026-10-15T01:36:00.6256433Z",
+  "status": "BACKUP_VERIFIED_BEFORE_CANONICAL_WRITES",
+  "historical_inventory_rows": 90,
+  "prechange_files": 3476,
+  "prechange_inventory_sha256": "bf9f5742997202addb7ac879735781480c614bfc63fe23d6024578fe27e6dfe9",
+  "files": [
+    {
+      "relative_path": "core\\Wlb.WorkerProcess.ps1",
+      "backup_relative_path": "tests\\stage03j\\recovery-20261015-guard-central\\backup\\core__Wlb.WorkerProcess.ps1",
+      "bytes": 28086,
+      "sha256": "dd20a1e2e26b766d45faefb5c76fcf689426446a9c39798a9ad36f211ff68a29"
+    },
+    {
+      "relative_path": "policy\\runtime-lock.json",
+      "backup_relative_path": "tests\\stage03j\\recovery-20261015-guard-central\\backup\\policy__runtime-lock.json",
+      "bytes": 4831,
+      "sha256": "7c051ecc3926898796f400a2dd4336a1ec773ed970552afaf79f2d2251674d94"
+    },
+    {
+      "relative_path": "manifests\\draft\\POC0-CALIBRATION-001.json",
+      "backup_relative_path": "tests\\stage03j\\recovery-20261015-guard-central\\backup\\manifests__draft__POC0-CALIBRATION-001.json",
+      "bytes": 4514,
+      "sha256": "2e3e049e60d4f5b5c752715f572658dd842beb1ff113bcb14af1c1ea8af3bbe0"
+    }
+  ],
+  "runtime_or_helper_started": false
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "wlb-character-bible/0.1",
+  "status": "SOURCE_BACKED_DESIGN_INTENT_NOT_VISUALLY_VERIFIED",
+  "immutability": "Execution-relevant changes require new version/hash and review; no filesystem immutability is claimed.",
+  "project": "WHAT LIES BTWN",
+  "master_intent": "16:9 landscape first where applicable; 9:16 adaptations reviewed separately.",
+  "character": {
+    "subject": "woman",
+    "skin": "pale",
+    "hair": "long black hair",
+    "wardrobe": "layered white dress",
+    "identity": "Preserve identity and orientation by shot.",
+    "approved_reference_assets": [],
+    "reference_assets_status": "UNKNOWN",
+    "rights_status": "UNKNOWN"
+  },
+  "shot_review": ["camera timing", "orientation", "ruins geometry", "waterfall geometry", "hair/body/dress continuity"],
+  "typography": "Keep brand typography in post-production layers.",
+  "poc0_application": "N/A: synthetic calibration does not render a character or prove identity consistency.",
+  "source": {
+    "stage03a_contract": "D:\\What Lies Btwn\\WHAT_LIES_BTWN_STAGE03A_PRODUCTION_OS_FOUNDATION_DESIGN_v0.1.txt",
+    "stage03a_contract_sha256": "f7ff595ac7292030b162e13cc7b3aa6db560965b626f2e6100371ebdf8e7df3c",
+    "stage02_report": "C:\\Users\\user\\.codex\\attachments\\89d4ccad-39e1-4c9a-846b-fc30c803dac6\\Texto colado.txt",
+    "stage02_report_sha256": "c77e83d38c2034fbe4feb25910cc179ed955d1242867cb529b398855514abdfd"
+  }
+}

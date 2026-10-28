@@ -1,0 +1,95 @@
+diff --git "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-guard-central\\backup\\core__Wlb.WorkerProcess.ps1" "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\core\\Wlb.WorkerProcess.ps1"
+index 63979b3..70b27f8 100644
+--- "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-guard-central\\backup\\core__Wlb.WorkerProcess.ps1"
++++ "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\core\\Wlb.WorkerProcess.ps1"
+@@ -25,6 +25,16 @@ namespace WlbOwnedJ {
+   [StructLayout(LayoutKind.Sequential)] internal struct ProcessInfo {public IntPtr process,thread;public uint pid,tid;}
+   [StructLayout(LayoutKind.Sequential)] struct SecurityAttributes {public int size;public IntPtr descriptor;[MarshalAs(UnmanagedType.Bool)]public bool inherit;}
+   [DllImport("kernel32.dll",CharSet=CharSet.Unicode,SetLastError=true)] internal static extern bool CreateProcessW(string app,StringBuilder command,IntPtr pa,IntPtr ta,bool inherit,uint flags,IntPtr environment,string directory,ref StartupInfo startup,out ProcessInfo info);
++  [StructLayout(LayoutKind.Sequential)] internal struct Performance {
++   public uint Size;public UIntPtr CommitTotal,CommitLimit,CommitPeak,PhysicalTotal,PhysicalAvailable;
++   public UIntPtr SystemCache,KernelTotal,KernelPaged,KernelNonpaged,PageSize;public uint HandleCount,ProcessCount,ThreadCount;
++  }
++  [DllImport("psapi.dll",SetLastError=true)] [return: MarshalAs(UnmanagedType.Bool)] static extern bool GetPerformanceInfo(out Performance p,uint size);
++  internal static long[] ReadHostResources(){
++   Performance p;if(!GetPerformanceInfo(out p,(uint)Marshal.SizeOf<Performance>()))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
++   long page=checked((long)p.PageSize.ToUInt64());
++   return new long[]{checked((long)p.PhysicalAvailable.ToUInt64()*page),checked((long)p.PhysicalTotal.ToUInt64()*page),checked((long)p.CommitTotal.ToUInt64()*page),checked((long)p.CommitLimit.ToUInt64()*page),page};
++  }
+   [DllImport("kernel32.dll",SetLastError=true)] internal static extern bool CloseHandle(IntPtr handle);
+   [DllImport("kernel32.dll",SetLastError=true)] static extern bool GetProcessTimes(SafeProcessHandle process,out long created,out long exited,out long kernel,out long user);
+   [DllImport("kernel32.dll",SetLastError=true)] static extern uint GetProcessId(SafeProcessHandle process);
+@@ -82,6 +92,14 @@ namespace WlbOwnedJ {
+   static readonly Dictionary<string,Lease> created=new Dictionary<string,Lease>();static readonly HashSet<string> used=new HashSet<string>();static readonly object gate=new object();
+   public static string Hash(string p){using(var s=File.OpenRead(p))return Convert.ToHexString(SHA256.HashData(s)).ToLowerInvariant();}
+   static bool Hex(string v){if(v==null||v.Length!=64)return false;foreach(char c in v)if(!((c>='0'&&c<='9')||(c>='a'&&c<='f')))return false;return true;}
++  static void AssertHostResourcesForCreate(){
++   try{
++    var v=Native.ReadHostResources();
++    if(v==null||v.Length!=5||v[0]<0||v[0]>v[1]||v[2]<0||v[2]>v[3]||v[4]<=0)throw new InvalidOperationException("HOST_READING_INCONSISTENT");
++    if(v[0]<8L*1024*1024*1024)throw new InvalidOperationException("AVAILABLE_RAM_BELOW_8_GIB");
++    if(v[3]-v[2]<10L*1024*1024*1024)throw new InvalidOperationException("COMMIT_HEADROOM_BELOW_10_GIB");
++   }catch(Exception e){throw new InvalidOperationException("STAGE03J_RESOURCE_BLOCKED:"+e.Message,e);}
++  }
+   public static Lease Start(string attempt,string nonce,string mode,string scriptHash,string pipeName,string sessionId){
+    Guid a,s;if(!Guid.TryParseExact(attempt,"D",out a)||!Guid.TryParseExact(sessionId,"D",out s)||!Hex(nonce)||!Hex(scriptHash)||pipeName!="WLB_STAGE03J_"+a.ToString("N"))throw new ArgumentException("OWNED_TEST_LAUNCH_CONTRACT");
+    if(mode!="NORMAL_EXIT"&&mode!="FINITE_DELAY"&&mode!="SIMULATED_HANG"&&mode!="CONTROLLED_FAILURE"&&mode!="HEARTBEAT_INTERRUPTION")throw new ArgumentException("FIXED_HELPER_MODE_ONLY");
+@@ -93,7 +111,9 @@ namespace WlbOwnedJ {
+    var items=new List<string>();foreach(var kv in env)items.Add(kv.Key+"="+kv.Value);IntPtr block=Marshal.StringToHGlobalUni(String.Join("\0",items)+"\0\0");
+    var startup=new Native.StartupInfo{cb=(uint)Marshal.SizeOf<Native.StartupInfo>()};Native.ProcessInfo info;
+    string command="\""+Executable+"\" -NoLogo -NoProfile -NonInteractive -File \""+Helper+"\" -Mode "+mode+" -PipeName "+pipeName+" -AttemptId "+attempt+" -Nonce "+nonce+" -SessionId "+sessionId+" -SupervisorPid "+Process.GetCurrentProcess().Id;
+-   try{if(!Native.CreateProcessW(Executable,new StringBuilder(command),IntPtr.Zero,IntPtr.Zero,false,0x08000400,block,directory,ref startup,out info))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());}
++   // Authoritative fresh admission is inside the creation lock, including direct callers.
++   // used.Add already consumed this attempt; any refusal is terminal, with no restart.
++   try{AssertHostResourcesForCreate();if(!Native.CreateProcessW(Executable,new StringBuilder(command),IntPtr.Zero,IntPtr.Zero,false,0x08000400,block,directory,ref startup,out info))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());}
+    finally{Marshal.FreeHGlobal(block);}
+    Native.CloseHandle(info.thread);var handle=new SafeProcessHandle(info.process,true);
+    var lease=new Lease(handle,attempt,nonce,mode);created.Add(attempt,lease);return lease;}
+@@ -148,13 +168,14 @@ function New-WlbJAttempt {
+ function Start-WlbJOwnedHelper {
+  param($Attempt,[ValidateSet('NORMAL_EXIT','FINITE_DELAY','SIMULATED_HANG','CONTROLLED_FAILURE','HEARTBEAT_INTERRUPTION')][string]$Mode)
+  Assert-WlbCondition ($Attempt.scope -ceq 'STAGE03J_OWNED_HELPER_TEST_ONLY' -and -not $Attempt.created -and -not $Attempt.terminal) 'Attempt restart/foreign scope denied'
+- $hostReading=Get-WlbPassiveHostMemory
+- $readiness=Test-WlbJHelperResourceReadiness $hostReading
+- if(-not $readiness.allowed_to_create_owned_test_helper){$Attempt.terminal=$true;$Attempt.reason='STAGE03J_RESOURCE_BLOCKED:'+($readiness.reasons -join ';')}
+- Assert-WlbCondition $readiness.allowed_to_create_owned_test_helper ('STAGE03J_RESOURCE_BLOCKED:'+($readiness.reasons -join ';'))
+- $Attempt.created=$true
+- $Attempt.lease=[WlbOwnedJ.Lifecycle]::Start($Attempt.id,$Attempt.nonce,$Mode,$Attempt.helper_sha256,$Attempt.pipe_name,$Attempt.session_id)
+- $Attempt.lease
++ try{
++  $hostReading=Get-WlbPassiveHostMemory
++  $readiness=Test-WlbJHelperResourceReadiness $hostReading
++  Assert-WlbCondition $readiness.allowed_to_create_owned_test_helper ('STAGE03J_RESOURCE_BLOCKED:'+($readiness.reasons -join ';'))
++  $Attempt.lease=[WlbOwnedJ.Lifecycle]::Start($Attempt.id,$Attempt.nonce,$Mode,$Attempt.helper_sha256,$Attempt.pipe_name,$Attempt.session_id)
++  $Attempt.created=$true
++  $Attempt.lease
++ }catch{$Attempt.terminal=$true;$Attempt.reason=$_.Exception.Message;throw}
+ }
+ function Test-WlbJHelperResourceReadiness {
+  param($HostReading)
+diff --git "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-guard-central\\backup\\policy__runtime-lock.json" "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\policy\\runtime-lock.json"
+index e2de94c..a4f2953 100644
+--- "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-guard-central\\backup\\policy__runtime-lock.json"
++++ "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\policy\\runtime-lock.json"
+@@ -67,7 +67,7 @@
+     "core\\Wlb.Supervisor.ps1": "ac03bcf4ac1fcf0e62712ee477b2895e54150c9652a1299cdf998de4d9684626",
+     "core\\Wlb.TelemetryWorker.ps1": "de94b7bf408f8937f2f472b9e6cc38da688870f259afe5fe49b12aa95addc055",
+     "tests\\stage03j\\OwnedTelemetryWorker.ps1": "b89d0bcbae989d7d15b98539310fc227211897710d0d9277e2504219ab3d502e",
+-    "core\\Wlb.WorkerProcess.ps1": "dd20a1e2e26b766d45faefb5c76fcf689426446a9c39798a9ad36f211ff68a29"
++    "core\\Wlb.WorkerProcess.ps1": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d"
+   },
+   "source_contracts": {
+     "stage03b_sha256": "495cb933e2c66613b08978740b211fc8eb9882c5e3430b1cdc4c6cf31d616cf5",
+diff --git "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-guard-central\\backup\\manifests__draft__POC0-CALIBRATION-001.json" "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\manifests\\draft\\POC0-CALIBRATION-001.json"
+index 78db0de..f365161 100644
+--- "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-guard-central\\backup\\manifests__draft__POC0-CALIBRATION-001.json"
++++ "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\manifests\\draft\\POC0-CALIBRATION-001.json"
+@@ -85,7 +85,7 @@
+   },
+   "binding": {
+     "policy_sha256": "2782c8aed1b02b959b6efb13eb4244a7e871d3bb8b279c554a0ddbceb22baf31",
+-    "runtime_lock_sha256": "7c051ecc3926898796f400a2dd4336a1ec773ed970552afaf79f2d2251674d94",
++    "runtime_lock_sha256": "50c6b9dfe0d30934399fff7241fe062444e1aa3871dd49933b781a9be0ed7cc7",
+     "character_bible_sha256": "08e216196d54297bc1868fbabdfac69305b77aa7eedd64715706ee829e0a70f8",
+     "hash_algorithm": "SHA256_RAW_FILE_BYTES",
+     "manifest_hash_location": "EXTERNAL_APPROVAL_ONLY_AFTER_REVIEW"

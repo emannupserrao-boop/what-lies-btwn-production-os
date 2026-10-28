@@ -1,0 +1,38 @@
+{
+  "schema_version": "wlb-startup-identity/0.1",
+  "purpose": "STATIC_CANDIDATE_NOT_EXECUTION_AUTHORITY",
+  "snapshot": {
+    "path": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\runtimes\\core\\ComfyUI",
+    "status": "NOT_CREATED",
+    "exists": false,
+    "source": "D:\\Musicas\\Bitter-End-Visual-Local\\ComfyUI",
+    "proposal_inventory": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\spec\\G4_SNAPSHOT_COPY_INVENTORY.csv",
+    "proposal_sha256": "a8e69c205a7f98a1aa3bb34d399201a61e76c112c233f7202abc8b25ba2941eb",
+    "file_count": 619,
+    "bytes": 9533695,
+    "actual_inventory_sha256": null
+  },
+  "python": {
+    "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Scripts\\python.exe",
+    "sha256": "72b29481593c5da37c99248c82777fbfb56217ea7809b771bc760d0a9ecb179b",
+    "fingerprint_kind": "RAW_ENTRY_EXECUTABLE_ONLY",
+    "runtime_validation": "RUNTIME_NOT_VERIFIED",
+    "bootstrap_and_standard_library_identity": "NOT_VERIFIED"
+  },
+  "dependencies": {
+    "metadata_path": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\spec\\G4_DEPENDENCY_METADATA.json",
+    "metadata_sha256": "97710ef8f044f13c1eb2c570ba188a697ce301c17aa871ef573a0afbbaabe901",
+    "status": "STATIC_METADATA_ONLY",
+    "binary_files_verified": false,
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  "main_path": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\runtimes\\core\\ComfyUI\\main.py",
+  "working_directory": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\runtimes\\core",
+  "cli_source_evidence": {
+    "path": "D:\\Musicas\\Bitter-End-Visual-Local\\ComfyUI\\comfy\\cli_args.py",
+    "sha256": "4b86bb46a886636e6564a279ea0572df226ee4a9fedfe16935864718e9bf9e4f",
+    "supported_partner_disable": "--disable-partner-nodes",
+    "offline_disables_partners_in_source": true,
+    "egress_firewall": false
+  }
+}

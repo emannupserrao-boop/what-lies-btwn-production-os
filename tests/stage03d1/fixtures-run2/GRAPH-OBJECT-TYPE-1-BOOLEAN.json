@@ -1,0 +1,13 @@
+{
+  "1": false,
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "POC0-CALIBRATION-001/calibration"
+    }
+  }
+}

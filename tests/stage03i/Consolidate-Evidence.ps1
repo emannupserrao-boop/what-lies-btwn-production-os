@@ -1,0 +1,23 @@
+#requires -Version 7.6
+. (Join-Path $PSScriptRoot 'I.Common.ps1')
+$suites=@(
+ @{name='I_TYPED_SUPERVISOR_PROXY';path='tests\stage03i\evidence\contracts-run5.json'},
+ @{name='I_ASYNC_PASSIVE';path='tests\stage03i\evidence\async-results-run3.json'},
+ @{name='D1_D2_RELEVANT_REGRESSION';path='tests\stage03i\regression\evidence\run2\test-results.json'},
+ @{name='F_FINAL_CONTRACTS';path='tests\stage03i\evidence\f-regression-results.json'},
+ @{name='FINAL_BINDINGS_SNAPSHOT_H_GATES';path='tests\stage03i\evidence\final-gates-results.json'}
+)
+$all=@(foreach($suite in $suites){$caseRows=Read-IJson (Join-Path $IRoot $suite.path);foreach($row in $caseRows){$row.suite=$suite.name;$row.suite_path=$suite.path;$row}})
+if($all.Count -ne 198 -or @($all|Where-Object {$_.status -cne 'PASS'}).Count){throw 'Consolidated final test mismatch'}
+$duplicates=@($all|Group-Object { $_.suite+':'+$_.id }|Where-Object Count -gt 1);if($duplicates.Count){throw 'Duplicate final IDs'}
+Save-INew 'consolidated-results.json' $all
+$rechecks=@($all|Where-Object {$_.evidence_kind -like 'RECHECK_*'}).Count
+Save-INew 'test-summary.json' @{checks=198;pass=198;fail=0;fresh_checks=198-$rechecks;stored_same_stage_measurement_rechecks=$rechecks;suites=@($suites|ForEach-Object {@{name=$_.name;path=$_.path;count=@($all|Where-Object suite -ceq $_.name).Count}});historical_stage03g_tests_not_counted=198;historical_stage03h_tests_not_counted=103;initial_contract_attempt=@{pass=52;fail=7};initial_async_attempt=@{pass=5;fail=2};intermediate_passing_runs_excluded_from_final_count=$true;runspaces_across_all_three_async_experiments=12;runspaces_natural_only=$true;real_runtime_or_jobs=0;process_kills=0;human_approvals=0}
+$matrix=@('# WHAT LIES BTWN — STAGE03I TEST MATRIX','','198 PASS / 0 FAIL final. 197 checks frescos + 1 recheck da medição passiva desta etapa.','As rodadas anteriores são preservadas, não somadas ao total final. Mock/fixture PASS não comprova watchdog de ComfyUI.','Cada linha refere um caso único dentro da suite; dados completos estão no JSON indicado.','','| Suite | ID | Status | Evidência | Arquivo de resultados |','| --- | --- | --- | --- | --- |')
+foreach($row in $all){$matrix+='| '+$row.suite+' | '+$row.id+' | '+$row.status+' | '+$row.evidence_kind+' | '+$row.suite_path+' |'}
+$matrixPath=Join-Path $IRoot 'STAGE03I_TEST_MATRIX.md';$s=[IO.File]::Open($matrixPath,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None);try{$s.Write([Text.UTF8Encoding]::new($false).GetBytes(($matrix -join "`n")));$s.Flush($true)}finally{$s.Dispose()}
+$p=Read-IJson (Join-Path $IEvidence 'passive-worker-sampling-run3.json');$a=Read-IJson (Join-Path $IEvidence 'async-delay-experiments-run3.json');$one=Read-IJson (Join-Path $IEvidence 'asynchronous-supervisor-passive-run3.json')
+$payloads=@($p.receipts|ForEach-Object {$_.envelope.PayloadJson|ConvertFrom-Json -AsHashtable -DateKind String})
+$performance=@{source='FINAL_RUN3_REAL_PASSIVE_AND_REAL_QPC_SIMULATED_DELAY';cold_collection_ms=$one.envelope.CollectionDurationMs;warm_collection_ms=@($p.receipts|ForEach-Object {$_.envelope.CollectionDurationMs});warm_mean_ms=($p.receipts|ForEach-Object {$_.envelope.CollectionDurationMs}|Measure-Object -Average).Average;neutral_mailbox_poll_max_ms=($p.consumer_poll_cost_ms|Measure-Object -Maximum).Maximum;combined_parent_worker_process_cpu_ms=$p.process_cpu_ms;elapsed_ms=$p.elapsed_ms;estimated_percent_one_core=$p.process_cpu_ms/$p.elapsed_ms*100;cpu_excludes_nvidia_and_cim_helpers=$true;max_acquisition_age_at_receipt_ms=($p.receipts|ForEach-Object {$_.supervisor_received_ms-$_.envelope.AcquisitionStartedMs}|Measure-Object -Maximum).Maximum;frame_byte_min=($p.receipts|ForEach-Object {$_.envelope.PayloadBytes}|Measure-Object -Minimum).Minimum;frame_byte_max=($p.receipts|ForEach-Object {$_.envelope.PayloadBytes}|Measure-Object -Maximum).Maximum;ram_min_gib=($payloads|ForEach-Object {$_.host.available_ram_bytes/1GB}|Measure-Object -Minimum).Minimum;ram_max_gib=($payloads|ForEach-Object {$_.host.available_ram_bytes/1GB}|Measure-Object -Maximum).Maximum;commit_headroom_min_gib=($payloads|ForEach-Object {$_.host.commit_headroom_bytes/1GB}|Measure-Object -Minimum).Minimum;delays=@($a|ForEach-Object {@{injected_query_delay_ms=$_.delay_ms;first_block_elapsed_ms=$_.first_blocked_elapsed_ms;max_supervisor_tick_ms=($_.ticks|ForEach-Object {$_.tick_cost_ms}|Measure-Object -Maximum).Maximum;natural_completion=$_.completed_naturally}});no_population_p95_or_hard_bound_claim=$true;actual_provider_generation_age='UNKNOWN';real_native_query_hang='NOT_VERIFIED';real_comfy_watchdog='NOT_VERIFIED'}
+Save-INew 'performance-summary.json' $performance
+@{checks=$all.Count;rechecks=$rechecks;new_core=2;existing_changed=3}|ConvertTo-Json

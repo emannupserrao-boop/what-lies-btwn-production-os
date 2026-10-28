@@ -1,0 +1,135 @@
+{
+  "schema": "wlb-stage03j-attempt-terminal-no-create-tests/0.1",
+  "utc": "2026-10-15T01:52:52.2566629Z",
+  "source_sha256": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d",
+  "test_sha256": "287f31749c314fc044f7312f8d95bee2dbdc272d7f9858b2b16e47c4ff23a318",
+  "isolated_fixture_sha256": "e5ed7c5d38420b2fab58bf9479baab1c9f0a0dc319e6d27180b37b176375133b",
+  "production_type_compiled_only": true,
+  "behavioral_native_creation_replaced_with_throwing_interceptor": true,
+  "native_termination_replaced_with_throw": true,
+  "real_helpers_created": 0,
+  "production_start_invoked": false,
+  "pass": 21,
+  "fail": 7,
+  "checks": [
+    {
+      "id": "production-native-source-compiles-without-invocation",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-exact8-and10-reaches-interceptor-only",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-ram-one-byte-below-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-headroom-one-byte-below-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-native-provider-unavailable-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-native-provider-exception-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-counter-conversion-overflow-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-page-multiplication-overflow-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-zero-page-size-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-available-exceeds-total-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-commit-exceeds-limit-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-realistic4096-page-unit-conversion",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-refusal-consumes-attempt-even-after-resource-recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "creation-failure-also-consumes-attempt",
+      "status": "PASS"
+    },
+    {
+      "id": "concurrent-direct-calls-serialize-fresh-read-and-create",
+      "status": "PASS"
+    },
+    {
+      "id": "same-attempt-concurrent-call-cannot-double-create",
+      "status": "PASS"
+    },
+    {
+      "id": "high-wrapper-low-native-refuses-with-correct-attempt-state",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-low-refusal-and-retry-never-call-native",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-unexpected-provider-exception-is-terminal",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-malformed-string-counter-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-inconsistent-headroom-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-lower-refusal-upper-alias-cannot-restart",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    },
+    {
+      "id": "direct-upper-refusal-lower-alias-cannot-restart",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    },
+    {
+      "id": "case-alias-concurrency-cannot-double-create",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    },
+    {
+      "id": "wrapper-low-refusal-blocks-direct-after-resource-recovery",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    },
+    {
+      "id": "wrapper-provider-exception-blocks-direct",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    },
+    {
+      "id": "wrapper-malformed-reading-blocks-direct",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    },
+    {
+      "id": "clearing-wrapper-local-terminal-flag-cannot-restart",
+      "status": "FAIL",
+      "detail": "ASSERTION_FALSE"
+    }
+  ]
+}

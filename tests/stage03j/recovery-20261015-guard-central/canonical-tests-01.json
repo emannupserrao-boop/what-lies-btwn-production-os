@@ -1,0 +1,100 @@
+{
+  "schema": "wlb-stage03j-central-guard-no-create-tests/0.1",
+  "utc": "2026-10-15T01:40:37.3293745Z",
+  "source_sha256": "6e5e0624099c68f572ddf0b171cd7e046d9e7a66dd3e48dfb5e9adc0f5522069",
+  "test_sha256": "82f5a096739b33cddc3617b4dbbed79102788080732cfa3e44c7950b2b68fcc4",
+  "isolated_fixture_sha256": "9ccb412dae95fb2c898648408a6c5eeeec063ad00b56c2f9842c3232445fd21d",
+  "production_type_compiled_only": true,
+  "behavioral_native_creation_replaced_with_throwing_interceptor": true,
+  "native_termination_replaced_with_throw": true,
+  "real_helpers_created": 0,
+  "production_start_invoked": false,
+  "pass": 21,
+  "fail": 0,
+  "checks": [
+    {
+      "id": "production-native-source-compiles-without-invocation",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-exact8-and10-reaches-interceptor-only",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-ram-one-byte-below-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-headroom-one-byte-below-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-native-provider-unavailable-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-native-provider-exception-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-counter-conversion-overflow-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-page-multiplication-overflow-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-zero-page-size-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-available-exceeds-total-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-commit-exceeds-limit-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-call-realistic4096-page-unit-conversion",
+      "status": "PASS"
+    },
+    {
+      "id": "direct-refusal-consumes-attempt-even-after-resource-recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "creation-failure-also-consumes-attempt",
+      "status": "PASS"
+    },
+    {
+      "id": "concurrent-direct-calls-serialize-fresh-read-and-create",
+      "status": "PASS"
+    },
+    {
+      "id": "same-attempt-concurrent-call-cannot-double-create",
+      "status": "PASS"
+    },
+    {
+      "id": "high-wrapper-low-native-refuses-with-correct-attempt-state",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-low-refusal-and-retry-never-call-native",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-unexpected-provider-exception-is-terminal",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-malformed-string-counter-refused",
+      "status": "PASS"
+    },
+    {
+      "id": "wrapper-inconsistent-headroom-refused",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "wlb-startup-policy/0.1",
+  "boundary_mode": "SUPERVISED_SAME_WINDOWS_ACCOUNT_POC0",
+  "preparation_state": "PREPARED",
+  "real_startup_enabled": false,
+  "gpu_jobs_enabled": false,
+  "auto_retry": false,
+  "max_active_startups": 1,
+  "listen_address": "127.0.0.1",
+  "port": 8189,
+  "required_gate": "G4_HUMAN_STARTUP_ONLY",
+  "consent_status": "ABSENT",
+  "human_parameters": {
+    "operator_identity": {
+      "status": "UNKNOWN",
+      "value": null
+    },
+    "cpu_budget": {
+      "status": "UNKNOWN",
+      "value": null
+    },
+    "polling_cadence_ms": {
+      "status": "UNKNOWN",
+      "value": null
+    },
+    "telemetry_freshness_ms": {
+      "status": "UNKNOWN",
+      "value": null
+    }
+  },
+  "budget": {
+    "min_available_ram_gib": 8,
+    "min_commit_headroom_gib": 10,
+    "max_incremental_commit_gib": 4,
+    "max_process_private_gib": 4,
+    "max_incremental_vram_gib": 2,
+    "startup_timeout_seconds": 120,
+    "job_timeout_seconds": 30,
+    "output_log_cap_mib": 256
+  },
+  "live_adapters": {
+    "process_start": "NOT_IMPLEMENTED_DISABLED",
+    "process_stop": "NOT_IMPLEMENTED_DISABLED",
+    "trusted_consent": "NOT_IMPLEMENTED",
+    "ram_commit": "NOT_VERIFIED",
+    "private_bytes": "NOT_VERIFIED",
+    "gpu_attribution": "NOT_VERIFIED",
+    "port_ownership": "NOT_VERIFIED",
+    "aggregate_disk": "NOT_VERIFIED"
+  },
+  "security_claims": {
+    "strong_operator_executor_isolation": false,
+    "filesystem_sandbox": false,
+    "network_egress_block": false,
+    "text_identity_is_independent_authentication": false,
+    "creative_agent_execution_authority": false
+  }
+}

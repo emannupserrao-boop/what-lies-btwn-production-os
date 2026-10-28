@@ -1,0 +1,43 @@
+{
+  "schema": "wlb-stage03j-attempt-terminal-delivery/0.1",
+  "utc": "2026-10-15T01:57:32.0464843Z",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "existing_files_modified": 3,
+  "existing_files_preserved": 3499,
+  "before_reproduction_checks": {
+    "fail": 7,
+    "pass": 21
+  },
+  "behavioral_checks": {
+    "fail": 0,
+    "pass": 28
+  },
+  "verification_checks": {
+    "fail": 0,
+    "pass": 16
+  },
+  "historical_status": "PARTIAL_WITH_BLOCKERS",
+  "historical_checks": {
+    "fail": 1,
+    "pass": 137
+  },
+  "prior_recovery_delivery_sha256": "9c169452dc426bf3bda3f9273dfc35022725235ece7e604e6489ec72779843a5",
+  "normal_exit_attempt": "NOT_RUN_AWAITING_INDEPENDENT_REVIEW",
+  "real_helpers_created": 0,
+  "g4": false,
+  "g5": false,
+  "consent": "ABSENT",
+  "inventory": {
+    "exclusions": [
+      "RECOVERY_SHA256.csv",
+      "RECOVERY_DELIVERY.json"
+    ],
+    "rows": 21,
+    "sha256": "96ebd5e664086b5ab9447ddbbcd9fc84ea100f8cf75fc25c9601a92d08bb8d31",
+    "path": "RECOVERY_SHA256.csv"
+  },
+  "review_sha256": "fc78ed8de5d35065d1dac6b180a76bad9d5f4f2ee47a8db6ae14d6413429f23b",
+  "changeset_sha256": "f82b588aa16bc97ad263231690bb205e9850b9a122bed3ed15397fae36617fab",
+  "selected_tests_sha256": "3edf7baedb9ad22f506f172eaa047bee7499e39aea9d66887e2cab0e371168e3",
+  "selected_verification_sha256": "fdc2be3e31ba9bb933a9878302f7e11931aa1ccff4ea4347d0c267814a5aec8b"
+}

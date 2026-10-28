@@ -1,0 +1,32 @@
+{
+  "schema": "wlb-stage03j-central-guard-final-changeset/0.1",
+  "utc": "2026-10-15T01:41:28.8480643Z",
+  "changes": [
+    {
+      "path": "core\\Wlb.WorkerProcess.ps1",
+      "before_sha256": "dd20a1e2e26b766d45faefb5c76fcf689426446a9c39798a9ad36f211ff68a29",
+      "after_sha256": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d",
+      "before_bytes": 28086,
+      "after_bytes": 29702
+    },
+    {
+      "path": "policy\\runtime-lock.json",
+      "before_sha256": "7c051ecc3926898796f400a2dd4336a1ec773ed970552afaf79f2d2251674d94",
+      "after_sha256": "50c6b9dfe0d30934399fff7241fe062444e1aa3871dd49933b781a9be0ed7cc7",
+      "before_bytes": 4831,
+      "after_bytes": 4831
+    },
+    {
+      "path": "manifests\\draft\\POC0-CALIBRATION-001.json",
+      "before_sha256": "2e3e049e60d4f5b5c752715f572658dd842beb1ff113bcb14af1c1ea8af3bbe0",
+      "after_sha256": "122d4791c387dd193527e88dc38de8577be5d96f87bcbe088ce42a18c6f77bad",
+      "before_bytes": 4514,
+      "after_bytes": 4514
+    }
+  ],
+  "note": "Preserved original module LF line endings; intermediate CRLF version and test results retained separately.",
+  "real_helpers_created": 0,
+  "normal_exit_attempt": "NOT_RUN_AWAITING_INDEPENDENT_REVIEW",
+  "g4": false,
+  "g5": false
+}

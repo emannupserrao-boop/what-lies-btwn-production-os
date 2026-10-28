@@ -1,0 +1,60 @@
+{
+  "schema_version": "wlb-runtime-lock/0.1",
+  "purpose": "PREPARED_SOURCE_FINGERPRINT_NOT_RUNTIME_VALIDATION",
+  "gate": "G1_ONLY",
+  "origin": {
+    "source_path": "D:\\Musicas\\Bitter-End-Visual-Local\\ComfyUI",
+    "version_from_stage02": "0.38.0",
+    "git_revision_from_stage02": "170594057a22673349ddf0a3d88624b7fa5865bb",
+    "worktree_clean": "NOT_VERIFIED",
+    "source_read_in_this_stage": false,
+    "snapshot_created": false,
+    "snapshot_inventory": [],
+    "snapshot_sha256": null,
+    "snapshot_status": "NOT_CREATED_BLOCKS_EXECUTION",
+    "reason": "Optional snapshot deferred: no unbounded source copy, source inspection or production mutation in G1."
+  },
+  "python_candidate": {
+    "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Scripts\\python.exe",
+    "python_version_from_stage02": "3.13.15",
+    "torch_from_stage02": "2.14.1+cu130",
+    "torchaudio_from_stage02": "2.11.0+cu130",
+    "torchvision_from_stage02": "0.29.1+cu130",
+    "transformers_from_stage02": "5.18.0",
+    "binary_hash": null,
+    "execution": "NOT_RUN",
+    "compatibility": "NOT_VERIFIED",
+    "provenance": "Historical Stage02 static evidence only; no fresh import/runtime probe."
+  },
+  "script_runtime_requirement": {
+    "powershell": "7.4_OR_LATER",
+    "availability": "NOT_VERIFIED",
+    "native_link_helper": "NOT_COMPILED_NOT_RUN",
+    "installations_authorized": false
+  },
+  "requested_agent_configuration": {
+    "model": "GPT-6.1 Sol",
+    "reasoning": "High",
+    "active_setting_verification": "NOT_VERIFIED_BY_PREPARATION_TOOLS"
+  },
+  "prepared_artifacts": {
+    "core\\Wlb.Common.ps1": "5d93aad9e1975acd3e4aed9609f56ce00b36c21ff62326d34e31c22ef7d81424",
+    "core\\Test-WlbManifest.ps1": "0cee15697d17b2a9e43a4fb91f042bd7646844c020a038b1834a75a390867509",
+    "core\\Invoke-WlbJob.ps1": "2278e14b700fe722c5ca6d7e2d6e2245c3b88b1288fdee006da2cdd415a5fe66",
+    "core\\Test-WlbOutput.ps1": "283718ce05f5caaaefbf5ef6bb2ee070ee5b0bc92d91f2a65c0ccee6ef7a6768",
+    "policy\\shot-manifest.schema.json": "6505d7153969c33b448066fa717cd26fe52af0343683e29dc4d639f82e4aa3c6",
+    "policy\\executor-policy.json": "71559f555a876194f127fc5f09edc590eb5ab92cdfefd195e8351ab86355dfdf",
+    "bible\\character-bible.v0.1.json": "08e216196d54297bc1868fbabdfac69305b77aa7eedd64715706ee829e0a70f8",
+    "workflows\\draft\\poc0-calibration.api.json": "c45eab6fc51cb3f8e7ddd1f63fc171d196b8793d16170c4b23d24251a799ba45",
+    "spec\\FUTURE_EXECUTION_CONTRACT.md": "b1f4712b9fac09a52aa8e8ab2698a7caaf2aff9ccdf950705ff3b5cef404e598"
+  },
+  "source_contracts": {
+    "stage03b_sha256": "495cb933e2c66613b08978740b211fc8eb9882c5e3430b1cdc4c6cf31d616cf5",
+    "stage03a_sha256": "f7ff595ac7292030b162e13cc7b3aa6db560965b626f2e6100371ebdf8e7df3c",
+    "stage02_sha256": "c77e83d38c2034fbe4feb25910cc179ed955d1242867cb529b398855514abdfd"
+  },
+  "approval_created": false,
+  "execution_validation": "NOT_VERIFIED",
+  "security_boundary_validation": "NOT_VERIFIED",
+  "performance_evidence": "NONE"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "wlb-stage03j-attempt-terminal-applied/0.1",
+  "utc": "2026-10-15T01:55:00.9869426Z",
+  "changes": [
+    {
+      "path": "core\\Wlb.WorkerProcess.ps1",
+      "before_sha256": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d",
+      "after_sha256": "21a16861c526d52b8ce70fc7dc534bed2898b2a58b2ae34c905bb223a105d34e",
+      "before_bytes": 29702,
+      "after_bytes": 30212
+    },
+    {
+      "path": "policy\\runtime-lock.json",
+      "before_sha256": "50c6b9dfe0d30934399fff7241fe062444e1aa3871dd49933b781a9be0ed7cc7",
+      "after_sha256": "83a5eb5e7468ef57cce68ddc4d42f725b0f07c64d83db1a9408be2b7b0a7c1df",
+      "before_bytes": 4831,
+      "after_bytes": 4831
+    },
+    {
+      "path": "manifests\\draft\\POC0-CALIBRATION-001.json",
+      "before_sha256": "122d4791c387dd193527e88dc38de8577be5d96f87bcbe088ce42a18c6f77bad",
+      "after_sha256": "5f1978b1a811e3ed3260d9fb00f0b4608ae3255b670929ad5c8e661eac9e267d",
+      "before_bytes": 4514,
+      "after_bytes": 4514
+    }
+  ],
+  "test_sha256": "287f31749c314fc044f7312f8d95bee2dbdc272d7f9858b2b16e47c4ff23a318",
+  "real_helpers_created": 0,
+  "normal_exit_attempt": "NOT_RUN_AWAITING_INDEPENDENT_REVIEW",
+  "g4": false,
+  "g5": false,
+  "historical_package_overwritten": false
+}

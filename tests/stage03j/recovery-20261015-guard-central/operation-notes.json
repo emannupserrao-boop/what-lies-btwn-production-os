@@ -1,0 +1,13 @@
+{
+  "schema": "wlb-stage03j-recovery-operation-notes/0.1",
+  "utc": "2026-10-15T01:44:34.3823178Z",
+  "preflight_rejections": [
+    "Initial shell foreach/pipeline parse error: read-only command did not run.",
+    "Backup path traversal initially used unsupported Split-Path parameter combination: aborted before any project write.",
+    "Apply script expected receipt hash had a transcription error: aborted before any project write."
+  ],
+  "intermediate_version": "CRLF version preserved in backup-intermediate; final source restores original LF with unchanged code semantics.",
+  "no_failed_behavioral_checks": true,
+  "real_helpers_created": 0,
+  "normal_exit_attempt": "NOT_RUN_AWAITING_INDEPENDENT_REVIEW"
+}

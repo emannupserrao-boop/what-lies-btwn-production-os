@@ -1,0 +1,430 @@
+[
+  {
+    "name": "torch",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: torch",
+      "Version: 2.14.1+cu130",
+      "License-Expression: Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torch-2.14.1+cu130.dist-info\\METADATA",
+        "bytes": 37982,
+        "sha256": "c980571008c81c6a36b9b2ef06bf63036a389835c4e3f15d42365d07b83d0de2"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torch-2.14.1+cu130.dist-info\\WHEEL",
+        "bytes": 105,
+        "sha256": "c029c274fa3f5f4406ad130efdcb4c85d8457ad347429efff896a5596d36b631"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torch-2.14.1+cu130.dist-info\\RECORD",
+        "bytes": 1473874,
+        "sha256": "ebfcc93d70d9a904fa1946fc1af7ee9ef12e2ae120a24d65fb681397c044755b"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "torchaudio",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: torchaudio",
+      "Version: 2.11.0+cu130"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torchaudio-2.11.0+cu130.dist-info\\METADATA",
+        "bytes": 6998,
+        "sha256": "3a1f44dc72be50a9c8977a515fd7e1d5858f9605dddeb71ae860a90583c5ae49"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torchaudio-2.11.0+cu130.dist-info\\WHEEL",
+        "bytes": 102,
+        "sha256": "f96befb50b5d84cd45e47322fb88525cb43fd5383aa894563b51e72cdaf89825"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torchaudio-2.11.0+cu130.dist-info\\RECORD",
+        "bytes": 13021,
+        "sha256": "c9d40a54339970af11c1e86a3e9d7f6b12daafee51c6018566e8f69c19ff6d56"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "torchvision",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: torchvision",
+      "Version: 0.29.1+cu130",
+      "License: BSD"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torchvision-0.29.1+cu130.dist-info\\METADATA",
+        "bytes": 5813,
+        "sha256": "f8169fd5a0f317592058eb1951df9242bb16732c8f73ec5a7fc8fd83590d9202"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torchvision-0.29.1+cu130.dist-info\\WHEEL",
+        "bytes": 101,
+        "sha256": "618df084de73688a73c560b1307190b70a080835c4b06021f9b2804da0f6863e"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\torchvision-0.29.1+cu130.dist-info\\RECORD",
+        "bytes": 38116,
+        "sha256": "57558443af78a471211bf9521a17afa75526e3dc9cc95ddabe46a2e1fd61e0c6"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "transformers",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: transformers",
+      "Version: 5.18.0",
+      "License: Apache 2.0 License"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\transformers-5.18.0.dist-info\\METADATA",
+        "bytes": 32231,
+        "sha256": "57734df2ecec997748d02c3453dc3e7fe7117acbb72bf98faa5ae3c26b261456"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\transformers-5.18.0.dist-info\\WHEEL",
+        "bytes": 91,
+        "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\transformers-5.18.0.dist-info\\RECORD",
+        "bytes": 509560,
+        "sha256": "d3bd07a6d3f9fbdb3d9c54b3fd4f269bfc8c639bcc125be75742e7b0da8e1c11"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "numpy",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: numpy",
+      "Version: 2.5.2",
+      "License-Expression: BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\numpy-2.5.2.dist-info\\METADATA",
+        "bytes": 6635,
+        "sha256": "9a895d801184d2176f926af84eb47f2db1af2756afac99d64a2bf482d5d5e024"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\numpy-2.5.2.dist-info\\WHEEL",
+        "bytes": 85,
+        "sha256": "b2eabc011af16e223b88b1f70602bef36bb3c50fb81e6fa6f30d35a02a24aed0"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\numpy-2.5.2.dist-info\\RECORD",
+        "bytes": 113271,
+        "sha256": "7240debb263422cf6a4f4ffb102eb1428ec81073183717231ce6ca0edb82de2c"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "pillow",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: pillow",
+      "Version: 12.3.0",
+      "License-Expression: MIT-CMU"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\pillow-12.3.0.dist-info\\METADATA",
+        "bytes": 9273,
+        "sha256": "2c4378001803cfac65809a50722d46e0da4ce8061e717f103e5d52734bab30f5"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\pillow-12.3.0.dist-info\\WHEEL",
+        "bytes": 101,
+        "sha256": "c795a9c3fb4bc793d02a259dc69aafb347bb4a0f923b499359d1000d80c63c60"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\pillow-12.3.0.dist-info\\RECORD",
+        "bytes": 14246,
+        "sha256": "d8316e04515627eb6005335704818ff59d07867874f30fc4ecd3d4998d6cb1bb"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "safetensors",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: safetensors",
+      "Version: 0.8.0"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\safetensors-0.8.0.dist-info\\METADATA",
+        "bytes": 4249,
+        "sha256": "597731d1baf7a94219753fa0a74abd1a8a18562d50d98b2e25d91e11e3224d36"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\safetensors-0.8.0.dist-info\\WHEEL",
+        "bytes": 96,
+        "sha256": "3944f45cfe532fd1eafba08882c6f99ba04053ca5f70da988f1d319c50d684db"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\safetensors-0.8.0.dist-info\\RECORD",
+        "bytes": 1785,
+        "sha256": "754fd615c189f0b29151eb4bf030cd5be7a3bc82d7765f0445d7cf713d68c203"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "aiohttp",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: aiohttp",
+      "Version: 3.14.3",
+      "License: Apache-2.0 AND MIT"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\aiohttp-3.14.3.dist-info\\METADATA",
+        "bytes": 8523,
+        "sha256": "e4d89e3c83a95cb74c235e2a80ea83ef75cdadf3d3a2fbf5ab8cf8eec3309ba9"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\aiohttp-3.14.3.dist-info\\WHEEL",
+        "bytes": 101,
+        "sha256": "00fff09229097149033d41af4cdc9dbfb83447b0615b5bbf7d51cd296ed32722"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\aiohttp-3.14.3.dist-info\\RECORD",
+        "bytes": 9135,
+        "sha256": "b2ed316d169f274d01af89bde5e637d1ca852a47be14da19dce47d0a9e2ebc4b"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "yarl",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: yarl",
+      "Version: 1.25.1",
+      "License: Apache-2.0"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\yarl-1.25.1.dist-info\\METADATA",
+        "bytes": 115008,
+        "sha256": "a6e8eb9810e93ee04f3159904ccec9d0780f4a9ed5181a59859b47d1b1e7afeb"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\yarl-1.25.1.dist-info\\WHEEL",
+        "bytes": 101,
+        "sha256": "d0b50da07c4bbdca70f5d6ffc745e8cc4e635bbdfefc63803bb7c30c9e17b784"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\yarl-1.25.1.dist-info\\RECORD",
+        "bytes": 1836,
+        "sha256": "d9b791264ed0fc3c75a1eec6597c0ab36cc03f7a7baedf679e9260a9c605b16e"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "pyyaml",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: PyYAML",
+      "Version: 6.0.3",
+      "License: MIT"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\pyyaml-6.0.3.dist-info\\METADATA",
+        "bytes": 2410,
+        "sha256": "847a701020334386852b6e07bad1053cb0ce3da9ee1846e7e9d02b24e8bb3f8d"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\pyyaml-6.0.3.dist-info\\WHEEL",
+        "bytes": 101,
+        "sha256": "a95d0420f9638f55c2fefb926ad4568e7d369d9233dcdd6df23b19cfb1c1af65"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\pyyaml-6.0.3.dist-info\\RECORD",
+        "bytes": 2780,
+        "sha256": "6d9e296c5f7374b37f236339bead73af5c6992788fd7e81301159599b561e26b"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "psutil",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: psutil",
+      "Version: 7.2.2",
+      "License: BSD-3-Clause"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\psutil-7.2.2.dist-info\\METADATA",
+        "bytes": 22729,
+        "sha256": "a263a40220d921d9cb963fc636d34f817aa2eb72c2696e3e3465d088cdb1976b"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\psutil-7.2.2.dist-info\\WHEEL",
+        "bytes": 99,
+        "sha256": "d4e0a5b3c507754487a0cdd46a453f48ec93d5ff66e527d511df0e830f267494"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\psutil-7.2.2.dist-info\\RECORD",
+        "bytes": 1875,
+        "sha256": "608513009f42446fe26e95de68032505277e0bb5c881db055fd31679035fbb84"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "comfy_aimdo",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: comfy-aimdo",
+      "Version: 0.5.5"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfy_aimdo-0.5.5.dist-info\\METADATA",
+        "bytes": 4448,
+        "sha256": "47b47cae993a53b863e5b28ce748376e43564f693050c3339d7c7cfccddeaeb5"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfy_aimdo-0.5.5.dist-info\\WHEEL",
+        "bytes": 99,
+        "sha256": "8b80ade60d4c159c15f7c78798d986b1facf81fd5e399da5e320b52fd0ad6b94"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfy_aimdo-0.5.5.dist-info\\RECORD",
+        "bytes": 1985,
+        "sha256": "04b2fb40bc1c04e3c90d8354b8d8fe9d4fbf36ae64654a3101d3305a3586a689"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "comfy_kitchen",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: comfy-kitchen",
+      "Version: 0.2.36",
+      "License: Apache-2.0"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfy_kitchen-0.2.36.dist-info\\METADATA",
+        "bytes": 19058,
+        "sha256": "afb473beefd441ff2e778ddd444f8a15361a981a010e10e7fd4708544c506a8c"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfy_kitchen-0.2.36.dist-info\\WHEEL",
+        "bytes": 100,
+        "sha256": "fb15081bd8f07be6e75c8c4ef0d9d5b930d00c6670c9a9359c27f833e09e66f3"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfy_kitchen-0.2.36.dist-info\\RECORD",
+        "bytes": 8935,
+        "sha256": "cb7b2408d1ec8f6a30a5628f83f4c2b7721e4aa7b692f24cf177401aea856353"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "comfyui_frontend_package",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: comfyui_frontend_package",
+      "Version: 1.53.10"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfyui_frontend_package-1.53.10.dist-info\\METADATA",
+        "bytes": 118,
+        "sha256": "0f00dfa908160b434bde81895cd8becf897cf8a6dea072b1e53f15db20eb04f9"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfyui_frontend_package-1.53.10.dist-info\\WHEEL",
+        "bytes": 91,
+        "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\comfyui_frontend_package-1.53.10.dist-info\\RECORD",
+        "bytes": 124141,
+        "sha256": "af33d4ad799e6fa6d4d12486a274364f7edeb0dd11902f082689b7cd6328afd4"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "alembic",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: alembic",
+      "Version: 1.20.0",
+      "License-Expression: MIT"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\alembic-1.20.0.dist-info\\METADATA",
+        "bytes": 7316,
+        "sha256": "bd32c118c43955c106bfa4255b2fb5ac9db410b0f7255a4cafb14b9e221ff41c"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\alembic-1.20.0.dist-info\\WHEEL",
+        "bytes": 91,
+        "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\alembic-1.20.0.dist-info\\RECORD",
+        "bytes": 13816,
+        "sha256": "a986aaee4a8e207a91d5ebd367e3d0fb24188fd99c4abb200774fbe581845f3c"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  },
+  {
+    "name": "sqlalchemy",
+    "status": "STATIC_METADATA_ONLY",
+    "header": [
+      "Name: SQLAlchemy",
+      "Version: 2.1.1",
+      "License-Expression: MIT"
+    ],
+    "metadata": [
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\sqlalchemy-2.1.1.dist-info\\METADATA",
+        "bytes": 9928,
+        "sha256": "305b753b578c422bfa1df86499967e7f6b7c1fda93713098468ba414932c9fb0"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\sqlalchemy-2.1.1.dist-info\\WHEEL",
+        "bytes": 101,
+        "sha256": "d0b50da07c4bbdca70f5d6ffc745e8cc4e635bbdfefc63803bb7c30c9e17b784"
+      },
+      {
+        "path": "D:\\Musicas\\Bitter-End-Visual-Local\\.venv\\Lib\\site-packages\\sqlalchemy-2.1.1.dist-info\\RECORD",
+        "bytes": 40901,
+        "sha256": "326af6190a7df6992c29ef2e3399282cbbd9691cbb39d69b1502deec0906df94"
+      }
+    ],
+    "runtime_compatibility": "RUNTIME_NOT_VERIFIED"
+  }
+]

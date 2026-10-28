@@ -1,0 +1,82 @@
+diff --git "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\core__Wlb.WorkerProcess.ps1" "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\core\\Wlb.WorkerProcess.ps1"
+index 70b27f8..c10f9f4 100644
+--- "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\core__Wlb.WorkerProcess.ps1"
++++ "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\core\\Wlb.WorkerProcess.ps1"
+@@ -89,9 +89,14 @@ namespace WlbOwnedJ {
+   public const string Executable=@"C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe";
+   public const string ExecutableHash="362a356ce7f0940ec74f73a8fc2c990a2cc24a38a11c90bbd8eca947110ad139";
+   public const string Helper=@"D:\WHAT-LIES-BTWN-PRODUCTION-OS\tests\stage03j\OwnedTelemetryWorker.ps1";
+-  static readonly Dictionary<string,Lease> created=new Dictionary<string,Lease>();static readonly HashSet<string> used=new HashSet<string>();static readonly object gate=new object();
++  static readonly Dictionary<Guid,Lease> created=new Dictionary<Guid,Lease>();static readonly HashSet<Guid> used=new HashSet<Guid>();static readonly object gate=new object();
+   public static string Hash(string p){using(var s=File.OpenRead(p))return Convert.ToHexString(SHA256.HashData(s)).ToLowerInvariant();}
+   static bool Hex(string v){if(v==null||v.Length!=64)return false;foreach(char c in v)if(!((c>='0'&&c<='9')||(c>='a'&&c<='f')))return false;return true;}
++  public static void MarkAttemptRefused(string attempt){
++   Guid a;if(!Guid.TryParseExact(attempt,"D",out a))throw new ArgumentException("OWNED_TEST_LAUNCH_CONTRACT");
++   // Shared monotonic refusal for every entry point; never release or grant a launch.
++   lock(gate){if(used.Count<32)used.Add(a);}
++  }
+   static void AssertHostResourcesForCreate(){
+    try{
+     var v=Native.ReadHostResources();
+@@ -102,8 +107,9 @@ namespace WlbOwnedJ {
+   }
+   public static Lease Start(string attempt,string nonce,string mode,string scriptHash,string pipeName,string sessionId){
+    Guid a,s;if(!Guid.TryParseExact(attempt,"D",out a)||!Guid.TryParseExact(sessionId,"D",out s)||!Hex(nonce)||!Hex(scriptHash)||pipeName!="WLB_STAGE03J_"+a.ToString("N"))throw new ArgumentException("OWNED_TEST_LAUNCH_CONTRACT");
++   attempt=a.ToString("D");
+    if(mode!="NORMAL_EXIT"&&mode!="FINITE_DELAY"&&mode!="SIMULATED_HANG"&&mode!="CONTROLLED_FAILURE"&&mode!="HEARTBEAT_INTERRUPTION")throw new ArgumentException("FIXED_HELPER_MODE_ONLY");
+-   lock(gate){int live=0;foreach(var l in created.Values)if(!l.Closed&&!l.HasExited)live++;if(live>=2||used.Count>=32||!used.Add(attempt))throw new InvalidOperationException("ATTEMPT_RESTART_OR_PROCESS_BOUND_DENIED");
++   lock(gate){int live=0;foreach(var l in created.Values)if(!l.Closed&&!l.HasExited)live++;if(live>=2||used.Count>=32||!used.Add(a))throw new InvalidOperationException("ATTEMPT_RESTART_OR_PROCESS_BOUND_DENIED");
+    if(Hash(Executable)!=ExecutableHash||Hash(Helper)!=scriptHash)throw new InvalidOperationException("FIXED_HELPER_SOURCE_IDENTITY_DIVERGED");
+    string directory=Path.GetDirectoryName(Helper),scratch=Path.Combine(directory,"scratch",a.ToString("N"));Directory.CreateDirectory(scratch);
+    var env=new SortedDictionary<string,string>(StringComparer.OrdinalIgnoreCase);foreach(DictionaryEntry e in Environment.GetEnvironmentVariables())env[(string)e.Key]=(string)e.Value;
+@@ -116,12 +122,13 @@ namespace WlbOwnedJ {
+    try{AssertHostResourcesForCreate();if(!Native.CreateProcessW(Executable,new StringBuilder(command),IntPtr.Zero,IntPtr.Zero,false,0x08000400,block,directory,ref startup,out info))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());}
+    finally{Marshal.FreeHGlobal(block);}
+    Native.CloseHandle(info.thread);var handle=new SafeProcessHandle(info.process,true);
+-   var lease=new Lease(handle,attempt,nonce,mode);created.Add(attempt,lease);return lease;}
++   var lease=new Lease(handle,attempt,nonce,mode);created.Add(a,lease);return lease;}
+   }
+   public static StopResult ValidateStop(Lease lease,string attempt,string nonce,StopEvidence expected){
+    if(lease==null||expected==null)return new StopResult(false,false,"SIMULATED_OR_NO_OWNED_LEASE",null);
+    if(!lease.MetadataVerified)return new StopResult(false,false,"OWNERSHIP_UNCERTAIN_BLOCKED_RECONCILE",lease.ProcessId);
+-   lock(gate){Lease registered;if(!created.TryGetValue(attempt,out registered)||!Object.ReferenceEquals(registered,lease)||lease.AttemptId!=attempt||lease.Nonce!=nonce||lease.Creator!=Process.GetCurrentProcess().Id||lease.Closed)return new StopResult(false,false,"FOREIGN_ATTEMPT_OR_TOKEN_OR_HANDLE",lease.ProcessId);}
++   Guid a;if(!Guid.TryParseExact(attempt,"D",out a))return new StopResult(false,false,"FOREIGN_ATTEMPT_OR_TOKEN_OR_HANDLE",lease.ProcessId);
++   lock(gate){Lease registered;if(!created.TryGetValue(a,out registered)||!Object.ReferenceEquals(registered,lease)||lease.AttemptId!=a.ToString("D")||lease.Nonce!=nonce||lease.Creator!=Process.GetCurrentProcess().Id||lease.Closed)return new StopResult(false,false,"FOREIGN_ATTEMPT_OR_TOKEN_OR_HANDLE",lease.ProcessId);}
+    try{
+     if(!lease.HeldCreationHandle||Native.Pid(lease.Handle)!=expected.ProcessId||Native.Creation(lease.Handle)!=expected.CreationFileTime||lease.ProcessId!=expected.ProcessId||lease.CreationFileTime!=expected.CreationFileTime)return new StopResult(false,false,"PID_REUSED_OR_CREATION_OR_HANDLE_MISMATCH",lease.ProcessId);
+     if(lease.HasExited)return new StopResult(true,false,"ALREADY_EXITED_HELD_TUPLE_NO_TERMINATION",lease.ProcessId);
+@@ -175,7 +182,7 @@ function Start-WlbJOwnedHelper {
+   $Attempt.lease=[WlbOwnedJ.Lifecycle]::Start($Attempt.id,$Attempt.nonce,$Mode,$Attempt.helper_sha256,$Attempt.pipe_name,$Attempt.session_id)
+   $Attempt.created=$true
+   $Attempt.lease
+- }catch{$Attempt.terminal=$true;$Attempt.reason=$_.Exception.Message;throw}
++ }catch{[WlbOwnedJ.Lifecycle]::MarkAttemptRefused($Attempt.id);$Attempt.terminal=$true;$Attempt.reason=$_.Exception.Message;throw}
+ }
+ function Test-WlbJHelperResourceReadiness {
+  param($HostReading)
+diff --git "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\policy__runtime-lock.json" "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\policy\\runtime-lock.json"
+index a4f2953..9f5b774 100644
+--- "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\policy__runtime-lock.json"
++++ "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\policy\\runtime-lock.json"
+@@ -67,7 +67,7 @@
+     "core\\Wlb.Supervisor.ps1": "ac03bcf4ac1fcf0e62712ee477b2895e54150c9652a1299cdf998de4d9684626",
+     "core\\Wlb.TelemetryWorker.ps1": "de94b7bf408f8937f2f472b9e6cc38da688870f259afe5fe49b12aa95addc055",
+     "tests\\stage03j\\OwnedTelemetryWorker.ps1": "b89d0bcbae989d7d15b98539310fc227211897710d0d9277e2504219ab3d502e",
+-    "core\\Wlb.WorkerProcess.ps1": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d"
++    "core\\Wlb.WorkerProcess.ps1": "21a16861c526d52b8ce70fc7dc534bed2898b2a58b2ae34c905bb223a105d34e"
+   },
+   "source_contracts": {
+     "stage03b_sha256": "495cb933e2c66613b08978740b211fc8eb9882c5e3430b1cdc4c6cf31d616cf5",
+diff --git "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\manifests__draft__POC0-CALIBRATION-001.json" "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\manifests\\draft\\POC0-CALIBRATION-001.json"
+index f365161..9065ead 100644
+--- "a/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\manifests__draft__POC0-CALIBRATION-001.json"
++++ "b/D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\manifests\\draft\\POC0-CALIBRATION-001.json"
+@@ -85,7 +85,7 @@
+   },
+   "binding": {
+     "policy_sha256": "2782c8aed1b02b959b6efb13eb4244a7e871d3bb8b279c554a0ddbceb22baf31",
+-    "runtime_lock_sha256": "50c6b9dfe0d30934399fff7241fe062444e1aa3871dd49933b781a9be0ed7cc7",
++    "runtime_lock_sha256": "83a5eb5e7468ef57cce68ddc4d42f725b0f07c64d83db1a9408be2b7b0a7c1df",
+     "character_bible_sha256": "08e216196d54297bc1868fbabdfac69305b77aa7eedd64715706ee829e0a70f8",
+     "hash_algorithm": "SHA256_RAW_FILE_BYTES",
+     "manifest_hash_location": "EXTERNAL_APPROVAL_ONLY_AFTER_REVIEW"

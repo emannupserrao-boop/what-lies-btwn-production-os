@@ -1,0 +1,30 @@
+{
+  "schema": "wlb-stage03j-attempt-terminal-backup/0.1",
+  "utc": "2026-10-15T01:53:30.9077910Z",
+  "status": "BACKUP_VERIFIED_BEFORE_CANONICAL_WRITES",
+  "prior_delivery_sha256": "9c169452dc426bf3bda3f9273dfc35022725235ece7e604e6489ec72779843a5",
+  "prior_inventory_rows": 27,
+  "prechange_files": 3502,
+  "prechange_inventory_sha256": "8050988de4dd18f148a56b98b0f13a3c00240fc7a23d7869abcf0c7822170bb3",
+  "files": [
+    {
+      "relative_path": "core\\Wlb.WorkerProcess.ps1",
+      "backup_relative_path": "tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\core__Wlb.WorkerProcess.ps1",
+      "bytes": 29702,
+      "sha256": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d"
+    },
+    {
+      "relative_path": "policy\\runtime-lock.json",
+      "backup_relative_path": "tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\policy__runtime-lock.json",
+      "bytes": 4831,
+      "sha256": "50c6b9dfe0d30934399fff7241fe062444e1aa3871dd49933b781a9be0ed7cc7"
+    },
+    {
+      "relative_path": "manifests\\draft\\POC0-CALIBRATION-001.json",
+      "backup_relative_path": "tests\\stage03j\\recovery-20261015-attempt-terminal\\backup\\manifests__draft__POC0-CALIBRATION-001.json",
+      "bytes": 4514,
+      "sha256": "122d4791c387dd193527e88dc38de8577be5d96f87bcbe088ce42a18c6f77bad"
+    }
+  ],
+  "real_helpers_created": 0
+}

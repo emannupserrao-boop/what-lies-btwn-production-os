@@ -1,0 +1,13 @@
+{
+  "schema_version": "wlb-approval/0.1",
+  "approval_id": "00000000-0000-4000-8000-000000000003",
+  "job_id": "POC0-CALIBRATION-001",
+  "manifest_sha256": "2b6cde0ef8db97cc42fc808d307d24004714f6cc81e009fa8a11e003a6c3bf31",
+  "graph_sha256": "0f9f407cf4aef2bb98aea9f44603521eec38558b986ed09e535c1259d6ae3a1e",
+  "runtime_lock_sha256": "43c0643240753edf5709d480226317cacdcd287605a32ef22ce17b0c720ee5b5",
+  "policy_sha256": "2782c8aed1b02b959b6efb13eb4244a7e871d3bb8b279c554a0ddbceb22baf31",
+  "scope": "ARBITRARY_JOB",
+  "status": "UNUSED",
+  "approved_by": "FORGED_UNAUTHENTICATED_TEST_IDENTITY",
+  "expires_at_utc": "2099-01-01T00:00:00Z"
+}

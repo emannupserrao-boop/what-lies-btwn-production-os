@@ -1,0 +1,154 @@
+{
+  "schema": "wlb-stage03j-attempt-terminal-final-verification/0.1",
+  "utc": "2026-10-15T01:56:10.7753208Z",
+  "pass": 16,
+  "fail": 0,
+  "checks": [
+    {
+      "id": "prechange3502-exact-three-approved-modifications",
+      "status": "PASS"
+    },
+    {
+      "id": "no-new-files-outside-recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "three-original-backups-still-match",
+      "status": "PASS"
+    },
+    {
+      "id": "lock-only-one-module-pin-replaced",
+      "status": "PASS"
+    },
+    {
+      "id": "draft-only64char-lock-binding-replaced",
+      "status": "PASS"
+    },
+    {
+      "id": "all21-prepared-pins-match",
+      "status": "PASS"
+    },
+    {
+      "id": "historical90-only-three-intentional-live-file-differences",
+      "status": "PASS"
+    },
+    {
+      "id": "historical-documents-and-inventory-unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "canonical-gates-budgets-human-fields-preserved",
+      "status": "PASS"
+    },
+    {
+      "id": "first-recovery-package-preserved-with-only-intended-live-bindings",
+      "status": "PASS"
+    },
+    {
+      "id": "same-seven-reproduced-failures-pass-after-correction",
+      "status": "PASS"
+    },
+    {
+      "id": "canonical-static-review-not-executable",
+      "status": "PASS"
+    },
+    {
+      "id": "execution-eligibility",
+      "status": "PASS"
+    },
+    {
+      "id": "g4-admission",
+      "status": "PASS"
+    },
+    {
+      "id": "g5-no-approval",
+      "status": "PASS"
+    },
+    {
+      "id": "new-native-memory-reader-valid-passive-measurement",
+      "status": "PASS"
+    }
+  ],
+  "changed_preexisting": [
+    {
+      "path": "core\\Wlb.WorkerProcess.ps1",
+      "sha256": "21a16861c526d52b8ce70fc7dc534bed2898b2a58b2ae34c905bb223a105d34e",
+      "expected": true
+    },
+    {
+      "path": "manifests\\draft\\POC0-CALIBRATION-001.json",
+      "sha256": "5f1978b1a811e3ed3260d9fb00f0b4608ae3255b670929ad5c8e661eac9e267d",
+      "expected": true
+    },
+    {
+      "path": "policy\\runtime-lock.json",
+      "sha256": "83a5eb5e7468ef57cce68ddc4d42f725b0f07c64d83db1a9408be2b7b0a7c1df",
+      "expected": true
+    }
+  ],
+  "missing": [],
+  "foreign_new": [],
+  "prechange_unchanged": 3499,
+  "historical_inventory_live_differences": [
+    "core\\Wlb.WorkerProcess.ps1",
+    "manifests\\draft\\POC0-CALIBRATION-001.json",
+    "policy\\runtime-lock.json"
+  ],
+  "historical_unexpected_differences": [],
+  "static_review": {
+    "review": "STATIC_CONTRACT_CHECK_ONLY",
+    "job_id": "POC0-CALIBRATION-001",
+    "manifest_sha256": "5f1978b1a811e3ed3260d9fb00f0b4608ae3255b670929ad5c8e661eac9e267d",
+    "graph_sha256": "0f9f407cf4aef2bb98aea9f44603521eec38558b986ed09e535c1259d6ae3a1e",
+    "executable": false,
+    "runtime_validation": "NOT_VERIFIED",
+    "approval": "ABSENT",
+    "submission": "NOT_PERFORMED"
+  },
+  "refusals": [
+    {
+      "probe": "execution-eligibility",
+      "reason": "BLOCKED: G1 preparation only. Execution disabled; runtime snapshot, approval, trusted preflight, monitor and submit adapter are not implemented/verified. See spec/FUTURE_EXECUTION_CONTRACT.md."
+    },
+    {
+      "probe": "g4-admission",
+      "reason": "BLOCKED: DEPENDENCY_IDENTITY_UNVERIFIED; PORT_OCCUPIED_OR_UNKNOWN; OPERATIONAL_MONITOR_NOT_READY; HUMAN_PARAMETER_PENDING:operator_identity; HUMAN_PARAMETER_PENDING:cpu_budget; HUMAN_PARAMETER_PENDING:polling_cadence_ms; HUMAN_PARAMETER_PENDING:telemetry_freshness_ms; CONSENT_MISSING; REAL_ADAPTERS_AND_G4_AUTHORITY_DISABLED"
+    },
+    {
+      "probe": "g5-no-approval",
+      "reason": "BLOCKED: Existing human approval required; no approval is created by this launcher."
+    }
+  ],
+  "passive_native_memory": {
+    "utc": "2026-10-15T01:56:10.7709682Z",
+    "source": "NEW_NATIVE_PSAPI_READER_ONLY",
+    "available_ram_bytes": 12423450624,
+    "physical_total_bytes": 33597927424,
+    "commit_total_bytes": 34554294272,
+    "commit_limit_bytes": 66883923968,
+    "commit_headroom_bytes": 32329629696,
+    "page_size": 4096,
+    "thresholds_met": true,
+    "start_authority": false
+  },
+  "memory_error": null,
+  "production_start_or_stop_invoked": false,
+  "real_helpers_created": 0,
+  "normal_exit_attempt": "NOT_RUN_AWAITING_INDEPENDENT_REVIEW",
+  "historical_status": "PARTIAL_WITH_BLOCKERS",
+  "historical_counts": {
+    "resource_blocker": "AVAILABLE_RAM_BELOW_8_GIB",
+    "fail": 1,
+    "pass": 137
+  },
+  "first_recovery_preserved": true,
+  "resolved_new_failures": [
+    "direct-lower-refusal-upper-alias-cannot-restart",
+    "direct-upper-refusal-lower-alias-cannot-restart",
+    "case-alias-concurrency-cannot-double-create",
+    "wrapper-low-refusal-blocks-direct-after-resource-recovery",
+    "wrapper-provider-exception-blocks-direct",
+    "wrapper-malformed-reading-blocks-direct",
+    "clearing-wrapper-local-terminal-flag-cannot-restart"
+  ]
+}

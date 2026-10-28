@@ -1,0 +1,136 @@
+{
+  "schema": "wlb-stage03j-central-guard-final-verification/0.1",
+  "utc": "2026-10-15T01:42:56.6135452Z",
+  "pass": 14,
+  "fail": 0,
+  "checks": [
+    {
+      "id": "prechange3476-exact-three-approved-modifications",
+      "status": "PASS"
+    },
+    {
+      "id": "no-new-files-outside-recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "three-original-backups-still-match",
+      "status": "PASS"
+    },
+    {
+      "id": "lock-only-one-module-pin-replaced",
+      "status": "PASS"
+    },
+    {
+      "id": "draft-only64char-lock-binding-replaced",
+      "status": "PASS"
+    },
+    {
+      "id": "all21-prepared-pins-match",
+      "status": "PASS"
+    },
+    {
+      "id": "historical90-only-three-intentional-live-file-differences",
+      "status": "PASS"
+    },
+    {
+      "id": "historical-documents-and-inventory-unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "canonical-gates-budgets-human-fields-preserved",
+      "status": "PASS"
+    },
+    {
+      "id": "canonical-static-review-not-executable",
+      "status": "PASS"
+    },
+    {
+      "id": "execution-eligibility",
+      "status": "PASS"
+    },
+    {
+      "id": "g4-admission",
+      "status": "PASS"
+    },
+    {
+      "id": "g5-no-approval",
+      "status": "PASS"
+    },
+    {
+      "id": "new-native-memory-reader-valid-passive-measurement",
+      "status": "PASS"
+    }
+  ],
+  "changed_preexisting": [
+    {
+      "path": "core\\Wlb.WorkerProcess.ps1",
+      "sha256": "4cd34847f8e83a9eda12fa8371c5a55efdede17bc4d1e01445f34e19f46c9c4d",
+      "expected": true
+    },
+    {
+      "path": "manifests\\draft\\POC0-CALIBRATION-001.json",
+      "sha256": "122d4791c387dd193527e88dc38de8577be5d96f87bcbe088ce42a18c6f77bad",
+      "expected": true
+    },
+    {
+      "path": "policy\\runtime-lock.json",
+      "sha256": "50c6b9dfe0d30934399fff7241fe062444e1aa3871dd49933b781a9be0ed7cc7",
+      "expected": true
+    }
+  ],
+  "missing": [],
+  "foreign_new": [],
+  "prechange_unchanged": 3473,
+  "historical_inventory_live_differences": [
+    "core\\Wlb.WorkerProcess.ps1",
+    "manifests\\draft\\POC0-CALIBRATION-001.json",
+    "policy\\runtime-lock.json"
+  ],
+  "historical_unexpected_differences": [],
+  "static_review": {
+    "review": "STATIC_CONTRACT_CHECK_ONLY",
+    "job_id": "POC0-CALIBRATION-001",
+    "manifest_sha256": "122d4791c387dd193527e88dc38de8577be5d96f87bcbe088ce42a18c6f77bad",
+    "graph_sha256": "0f9f407cf4aef2bb98aea9f44603521eec38558b986ed09e535c1259d6ae3a1e",
+    "executable": false,
+    "runtime_validation": "NOT_VERIFIED",
+    "approval": "ABSENT",
+    "submission": "NOT_PERFORMED"
+  },
+  "refusals": [
+    {
+      "probe": "execution-eligibility",
+      "reason": "BLOCKED: G1 preparation only. Execution disabled; runtime snapshot, approval, trusted preflight, monitor and submit adapter are not implemented/verified. See spec/FUTURE_EXECUTION_CONTRACT.md."
+    },
+    {
+      "probe": "g4-admission",
+      "reason": "BLOCKED: DEPENDENCY_IDENTITY_UNVERIFIED; PORT_OCCUPIED_OR_UNKNOWN; OPERATIONAL_MONITOR_NOT_READY; HUMAN_PARAMETER_PENDING:operator_identity; HUMAN_PARAMETER_PENDING:cpu_budget; HUMAN_PARAMETER_PENDING:polling_cadence_ms; HUMAN_PARAMETER_PENDING:telemetry_freshness_ms; CONSENT_MISSING; REAL_ADAPTERS_AND_G4_AUTHORITY_DISABLED"
+    },
+    {
+      "probe": "g5-no-approval",
+      "reason": "BLOCKED: Existing human approval required; no approval is created by this launcher."
+    }
+  ],
+  "passive_native_memory": {
+    "utc": "2026-10-15T01:42:56.6031034Z",
+    "source": "NEW_NATIVE_PSAPI_READER_ONLY",
+    "available_ram_bytes": 10520313856,
+    "physical_total_bytes": 33597927424,
+    "commit_total_bytes": 35412037632,
+    "commit_limit_bytes": 66883923968,
+    "commit_headroom_bytes": 31471886336,
+    "page_size": 4096,
+    "thresholds_met": true,
+    "start_authority": false
+  },
+  "memory_error": null,
+  "production_start_or_stop_invoked": false,
+  "real_helpers_created": 0,
+  "normal_exit_attempt": "NOT_RUN_AWAITING_INDEPENDENT_REVIEW",
+  "historical_status": "PARTIAL_WITH_BLOCKERS",
+  "historical_counts": {
+    "resource_blocker": "AVAILABLE_RAM_BELOW_8_GIB",
+    "fail": 1,
+    "pass": 137
+  }
+}

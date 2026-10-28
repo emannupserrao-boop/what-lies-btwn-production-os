@@ -1,0 +1,152 @@
+{
+  "schema_version": "wlb-shot-manifest/0.1",
+  "project_id": "WHAT-LIES-BTWN",
+  "shot_id": "POC0-CALIBRATION",
+  "job_id": "POC0-CALIBRATION-001",
+  "revision": 1,
+  "owner": {
+    "role": "HUMAN_OPERATOR",
+    "identity_status": "UNKNOWN",
+    "identity": null,
+    "reason": "Operator identity must be confirmed before future approval; not inferred from account path."
+  },
+  "state": "DRAFT",
+  "intent": {
+    "purpose": "Validate one-shot production core with synthetic calibration only",
+    "artifact": "ONE_SYNTHETIC_RGB_PNG",
+    "generative_inference": false,
+    "production_release": false
+  },
+  "character_bible_version": "wlb-character-bible/0.1",
+  "source_assets": [],
+  "workflow": {
+    "path": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03c\\composite-run2\\COMPOSITE-STALE-GRAPH-HASH\\workflows\\draft\\poc0-calibration.api.json",
+    "sha256": "0f9f407cf4aef2bb98aea9f44603521eec38558b986ed09e535c1259d6ae3a1e",
+    "status": "DRAFT_NOT_PROMOTED",
+    "allowed_nodes": [
+      "EmptyImage",
+      "SaveImage"
+    ]
+  },
+  "models": [],
+  "parameters": {
+    "width": 640,
+    "height": 360,
+    "batch_size": 1,
+    "frame_count": 1,
+    "color": 3368601,
+    "aspect": "16:9",
+    "prompt": {
+      "status": "N/A",
+      "value": null,
+      "reason": "EmptyImage has no text conditioning."
+    },
+    "negative_prompt": {
+      "status": "N/A",
+      "value": null,
+      "reason": "No text conditioning or sampler exists."
+    },
+    "seed": {
+      "status": "N/A",
+      "value": null,
+      "reason": "Deterministic constant-color tensor; no random generation."
+    },
+    "fps": {
+      "status": "N/A",
+      "value": null,
+      "reason": "One still PNG, not a video."
+    },
+    "audio": {
+      "status": "N/A",
+      "value": null,
+      "reason": "Image-only synthetic calibration."
+    },
+    "reference_frames": []
+  },
+  "output": {
+    "directory": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03c\\composite-run2\\COMPOSITE-STALE-GRAPH-HASH\\runtimes\\core\\state\\output\\POC0-CALIBRATION-001",
+    "filename_prefix": "POC0-CALIBRATION-001/calibration",
+    "format": "PNG_RGB_8BIT",
+    "overwrite": false,
+    "expected_count": 1
+  },
+  "budget": {
+    "min_available_ram_gib": 8,
+    "min_commit_headroom_gib": 10,
+    "max_incremental_commit_gib": 4,
+    "max_process_private_gib": 4,
+    "max_incremental_vram_gib": 2,
+    "startup_timeout_seconds": 120,
+    "job_timeout_seconds": 30,
+    "output_log_cap_mib": 256
+  },
+  "qc_targets": {
+    "width": 640,
+    "height": 360,
+    "rgb_hex": "336699",
+    "frame_count": 1,
+    "output_sha256": "REQUIRED_AFTER_EXECUTION",
+    "decoded_pixel_check": "REQUIRED_NOT_IMPLEMENTED",
+    "gpu_evidence": "REQUIRED_AFTER_AUTHORIZED_JOB",
+    "budget_evidence": "REQUIRED_AFTER_AUTHORIZED_JOB",
+    "independent_reviewer": "HUMAN_PENDING_IDENTIFICATION",
+    "human_acceptance": "REQUIRED"
+  },
+  "provenance": {
+    "prepared_date": "2026-10-13",
+    "timezone": "Europe/Bucharest",
+    "source_report": "C:\\Users\\user\\.codex\\attachments\\89d4ccad-39e1-4c9a-846b-fc30c803dac6\\Texto colado.txt",
+    "source_report_sha256": "c77e83d38c2034fbe4feb25910cc179ed955d1242867cb529b398855514abdfd",
+    "source_assets_license": {
+      "status": "N/A",
+      "value": null,
+      "reason": "No external assets or models; synthetic color only."
+    },
+    "runtime_validation": "NOT_VERIFIED",
+    "device_selection": "NOT_VERIFIED",
+    "execution_timestamp": {
+      "status": "NOT_EXECUTED",
+      "value": null,
+      "reason": "G1 does not authorize jobs."
+    },
+    "prompt_id": {
+      "status": "NOT_EXECUTED",
+      "value": null,
+      "reason": "No POST /prompt performed."
+    },
+    "observed_resources": {
+      "status": "NOT_EXECUTED",
+      "value": null,
+      "reason": "No runtime or hardware probe performed."
+    },
+    "source_snapshot": "NOT_CREATED",
+    "cpu_budget": {
+      "status": "UNKNOWN",
+      "value": null,
+      "reason": "Future CPU policy must be specified before execution; not inferred from hardware."
+    }
+  },
+  "binding": {
+    "policy_sha256": "78fa04912eb1ac56c8e88ad79012106844e50e105469ccceb234a15b82e8a320",
+    "runtime_lock_sha256": "840aad31acc0d4bfe0dadb07374a8bca3bb743fb207e603b020fcafea7628693",
+    "character_bible_sha256": "08e216196d54297bc1868fbabdfac69305b77aa7eedd64715706ee829e0a70f8",
+    "hash_algorithm": "SHA256_RAW_FILE_BYTES",
+    "manifest_hash_location": "EXTERNAL_APPROVAL_ONLY_AFTER_REVIEW"
+  },
+  "approval_contract": {
+    "required": true,
+    "record_created": false,
+    "scope": "ONE_GPU_JOB_ONLY",
+    "bindings": [
+      "manifest_sha256",
+      "graph_sha256",
+      "runtime_lock_sha256",
+      "policy_sha256"
+    ],
+    "expiry": "REQUIRED_IN_FUTURE_OPERATOR_ISSUED_RECORD",
+    "consume_before_submit": "REQUIRED_NOT_IMPLEMENTED",
+    "replay": "DENY",
+    "unknown_result": "BLOCKED_RECONCILE_WITHOUT_RESUBMIT",
+    "retry": "NONE"
+  }
+}

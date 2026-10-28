@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:wlb:shot-manifest:0.1",
+  "title": "WLB POC0 manifest — strict preparation contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_id", "shot_id", "job_id", "revision", "owner", "state", "intent", "character_bible_version", "source_assets", "workflow", "models", "parameters", "output", "budget", "qc_targets", "provenance", "binding", "approval_contract"],
+  "properties": {
+    "schema_version": {"const": "wlb-shot-manifest/0.1"},
+    "project_id": {"const": "WHAT-LIES-BTWN"},
+    "shot_id": {"const": "POC0-CALIBRATION"},
+    "job_id": {"const": "POC0-CALIBRATION-001"},
+    "revision": {"type": "integer", "minimum": 1},
+    "owner": {
+      "type": "object", "additionalProperties": false,
+      "required": ["role", "identity_status", "identity", "reason"],
+      "properties": {
+        "role": {"const": "HUMAN_OPERATOR"},
+        "identity_status": {"enum": ["UNKNOWN", "CONFIRMED"]},
+        "identity": {"type": ["string", "null"]},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [{"if": {"properties": {"identity_status": {"const": "UNKNOWN"}}}, "then": {"properties": {"identity": {"type": "null"}}}, "else": {"properties": {"identity": {"type": "string", "minLength": 1, "not": {"const": "UNKNOWN"}}}}}]
+    },
+    "state": {"enum": ["DRAFT", "REVIEWED", "HUMAN_APPROVED", "QUEUED", "RUNNING", "QC", "ACCEPTED", "REJECTED", "BLOCKED"]},
+    "intent": {
+      "type": "object", "additionalProperties": false,
+      "required": ["purpose", "artifact", "generative_inference", "production_release"],
+      "properties": {
+        "purpose": {"const": "Validate one-shot production core with synthetic calibration only"},
+        "artifact": {"const": "ONE_SYNTHETIC_RGB_PNG"},
+        "generative_inference": {"const": false},
+        "production_release": {"const": false}
+      }
+    },
+    "character_bible_version": {"const": "wlb-character-bible/0.1"},
+    "source_assets": {"type": "array", "maxItems": 0},
+    "workflow": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "status", "allowed_nodes"],
+      "properties": {
+        "path": {"const": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03d1\\composite\\COMPOSITE-POLICY-MISSING\\workflows\\draft\\poc0-calibration.api.json"},
+        "sha256": {"$ref": "#/definitions/hash"},
+        "status": {"const": "DRAFT_NOT_PROMOTED"},
+        "allowed_nodes": {"type": "array", "minItems": 2, "maxItems": 2, "items": [{"const": "EmptyImage"}, {"const": "SaveImage"}], "additionalItems": false}
+      }
+    },
+    "models": {"type": "array", "maxItems": 0},
+    "parameters": {
+      "type": "object", "additionalProperties": false,
+      "required": ["width", "height", "batch_size", "frame_count", "color", "aspect", "prompt", "negative_prompt", "seed", "fps", "audio", "reference_frames"],
+      "properties": {
+        "width": {"const": 640}, "height": {"const": 360},
+        "batch_size": {"const": 1}, "frame_count": {"const": 1},
+        "color": {"const": 3368601}, "aspect": {"const": "16:9"},
+        "prompt": {"$ref": "#/definitions/notApplicable"},
+        "negative_prompt": {"$ref": "#/definitions/notApplicable"},
+        "seed": {"$ref": "#/definitions/notApplicable"},
+        "fps": {"$ref": "#/definitions/notApplicable"},
+        "audio": {"$ref": "#/definitions/notApplicable"},
+        "reference_frames": {"type": "array", "maxItems": 0}
+      }
+    },
+    "output": {
+      "type": "object", "additionalProperties": false,
+      "required": ["directory", "filename_prefix", "format", "overwrite", "expected_count"],
+      "properties": {
+        "directory": {"const": "D:\\WHAT-LIES-BTWN-PRODUCTION-OS\\tests\\stage03d1\\composite\\COMPOSITE-POLICY-MISSING\\runtimes\\core\\state\\output\\POC0-CALIBRATION-001"},
+        "filename_prefix": {"const": "POC0-CALIBRATION-001/calibration"},
+        "format": {"const": "PNG_RGB_8BIT"},
+        "overwrite": {"const": false}, "expected_count": {"const": 1}
+      }
+    },
+    "budget": {
+      "type": "object", "additionalProperties": false,
+      "required": ["min_available_ram_gib", "min_commit_headroom_gib", "max_incremental_commit_gib", "max_process_private_gib", "max_incremental_vram_gib", "startup_timeout_seconds", "job_timeout_seconds", "output_log_cap_mib"],
+      "properties": {
+        "min_available_ram_gib": {"const": 8}, "min_commit_headroom_gib": {"const": 10},
+        "max_incremental_commit_gib": {"const": 4}, "max_process_private_gib": {"const": 4},
+        "max_incremental_vram_gib": {"const": 2}, "startup_timeout_seconds": {"const": 120},
+        "job_timeout_seconds": {"const": 30}, "output_log_cap_mib": {"const": 256}
+      }
+    },
+    "qc_targets": {
+      "type": "object", "additionalProperties": false,
+      "required": ["width", "height", "rgb_hex", "frame_count", "output_sha256", "decoded_pixel_check", "gpu_evidence", "budget_evidence", "independent_reviewer", "human_acceptance"],
+      "properties": {
+        "width": {"const": 640}, "height": {"const": 360}, "rgb_hex": {"const": "336699"}, "frame_count": {"const": 1},
+        "output_sha256": {"const": "REQUIRED_AFTER_EXECUTION"},
+        "decoded_pixel_check": {"const": "REQUIRED_NOT_IMPLEMENTED"},
+        "gpu_evidence": {"const": "REQUIRED_AFTER_AUTHORIZED_JOB"},
+        "budget_evidence": {"const": "REQUIRED_AFTER_AUTHORIZED_JOB"},
+        "independent_reviewer": {"const": "HUMAN_PENDING_IDENTIFICATION"},
+        "human_acceptance": {"const": "REQUIRED"}
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["prepared_date", "timezone", "source_report", "source_report_sha256", "source_assets_license", "runtime_validation", "device_selection", "execution_timestamp", "prompt_id", "observed_resources", "source_snapshot", "cpu_budget"],
+      "properties": {
+        "prepared_date": {"const": "2026-10-13"}, "timezone": {"const": "Europe/Bucharest"},
+        "source_report": {"type": "string", "minLength": 1}, "source_report_sha256": {"$ref": "#/definitions/hash"},
+        "source_assets_license": {"$ref": "#/definitions/notApplicable"},
+        "runtime_validation": {"const": "NOT_VERIFIED"}, "device_selection": {"const": "NOT_VERIFIED"},
+        "execution_timestamp": {"$ref": "#/definitions/notExecuted"}, "prompt_id": {"$ref": "#/definitions/notExecuted"},
+        "observed_resources": {"$ref": "#/definitions/notExecuted"},
+        "source_snapshot": {"const": "NOT_CREATED"},
+        "cpu_budget": {"$ref": "#/definitions/unknown"}
+      }
+    },
+    "binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["policy_sha256", "runtime_lock_sha256", "character_bible_sha256", "hash_algorithm", "manifest_hash_location"],
+      "properties": {
+        "policy_sha256": {"$ref": "#/definitions/hash"}, "runtime_lock_sha256": {"$ref": "#/definitions/hash"}, "character_bible_sha256": {"$ref": "#/definitions/hash"},
+        "hash_algorithm": {"const": "SHA256_RAW_FILE_BYTES"},
+        "manifest_hash_location": {"const": "EXTERNAL_APPROVAL_ONLY_AFTER_REVIEW"}
+      }
+    },
+    "approval_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required", "record_created", "scope", "bindings", "expiry", "consume_before_submit", "replay", "unknown_result", "retry"],
+      "properties": {
+        "required": {"const": true}, "record_created": {"const": false}, "scope": {"const": "ONE_GPU_JOB_ONLY"},
+        "bindings": {"type": "array", "minItems": 4, "maxItems": 4, "items": [{"const": "manifest_sha256"}, {"const": "graph_sha256"}, {"const": "runtime_lock_sha256"}, {"const": "policy_sha256"}], "additionalItems": false},
+        "expiry": {"const": "REQUIRED_IN_FUTURE_OPERATOR_ISSUED_RECORD"},
+        "consume_before_submit": {"const": "REQUIRED_NOT_IMPLEMENTED"}, "replay": {"const": "DENY"},
+        "unknown_result": {"const": "BLOCKED_RECONCILE_WITHOUT_RESUBMIT"}, "retry": {"const": "NONE"}
+      }
+    }
+  },
+  "definitions": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "notApplicable": {"type": "object", "additionalProperties": false, "required": ["status", "value", "reason"], "properties": {"status": {"const": "N/A"}, "value": {"type": "null"}, "reason": {"type": "string", "minLength": 1}}},
+    "notExecuted": {"type": "object", "additionalProperties": false, "required": ["status", "value", "reason"], "properties": {"status": {"const": "NOT_EXECUTED"}, "value": {"type": "null"}, "reason": {"type": "string", "minLength": 1}}},
+    "unknown": {"type": "object", "additionalProperties": false, "required": ["status", "value", "reason"], "properties": {"status": {"const": "UNKNOWN"}, "value": {"type": "null"}, "reason": {"type": "string", "minLength": 1}}}
+  }
+}

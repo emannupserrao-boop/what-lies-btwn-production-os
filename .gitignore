@@ -1,0 +1,5 @@
+﻿# Versionado pelo EMANNU OS
+__pycache__/
+*.pyc
+.venv/
+venv/
